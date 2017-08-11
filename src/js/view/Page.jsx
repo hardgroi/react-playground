@@ -12,17 +12,38 @@ const fields = [
         input: {
             type: "text",
             name: 'text',
-            value: "Text Value",
-            style: '',
             placeHolder: ''
+        },
+        style:{
+            input: '',
+            label: ''
         }
     }, {
         type: Constants.InputType.TEXTAREA,
-        label: 'TextArea',
+        label: 'Text Input',
         input: {
             name: 'textarea',
             value: 'teaxtarea',
-            style: ''
+        },
+        style: {
+            input: '',
+            label: ''
+        }
+    }, {
+        type: Constants.InputType.RADIO,
+        label: 'Radio Input',
+        input: {
+            options: [
+                {
+                    name: 'option',
+                    value: 'option1',
+                    label: 'option1'
+                }, {
+                    name: 'option',
+                    value: 'option2',
+                    label: 'option2'
+                }
+            ]
         }
     }
 ]
@@ -30,13 +51,23 @@ const fields = [
 export default class Page extends React.Component{
     constructor(props){
         super(props)
+        this.state = { value: '' }
+        this.handleChange = this.handleChange.bind(this)
+    }
+    handleChange(e){
+        console.info(e.target.value)
+        this.setState({value: e.target.value})
     }
     render(){
         let inputs = fields.map((field, index) => {
             return (
                 <div key={index}>
                     <label>{field.label}</label>:
-                    <Input type={field.type} input={field.input}/>
+                    <Input type={field.type} 
+                        input={field.input} 
+                        value={this.state.value}
+                        handler={this.handleChange}/>
+                    <br/>
                 </div>
             )
         })
