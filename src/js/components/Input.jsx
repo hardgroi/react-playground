@@ -64,9 +64,12 @@ class Radio extends React.Component{
                 <span key={index}>
                     <input type="radio"
                     name={option.name}
+                    checked={(this.props.value === option.value) ? true : false}
                     value={option.value}
                     onChange={this.props.handler}/>
-                    <label>{option.label}</label>
+                    <label>
+                        {option.label}
+                    </label>
                 </span>
             )
         }, this)
@@ -110,7 +113,7 @@ class Dropdown extends React.Component{
         return(
             <select name={this.props.name} 
               onChange={this.props.handler}
-              value={this.props.selectedValue}>
+              value={this.props.value}>
                 <option value="" style={this.props.style.option}></option>
                 {options}
             </select>
