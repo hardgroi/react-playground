@@ -33,15 +33,30 @@ const fields = [
         type: Constants.InputType.RADIO,
         label: 'Radio Input',
         input: {
+            name: '',
             options: [
                 {
-                    name: 'option',
                     value: 'option1',
                     label: 'option1'
                 }, {
-                    name: 'option',
                     value: 'option2',
                     label: 'option2'
+                }
+            ]
+        }
+    }, {
+        type: Constants.InputType.DROPDOWN,
+        label: 'Dropdown',
+        input: {
+            value: undefined,
+            input: undefined,
+            options: [
+                {
+                    value: 'dropdown1',
+                    label: 'dropdown1'
+                }, {
+                    value: 'dropdown2',
+                    label: 'dropdown2'
                 }
             ]
         }

@@ -63,7 +63,7 @@ class Radio extends React.Component{
             return (
                 <span key={index}>
                     <input type="radio"
-                    name={option.name}
+                    name={this.props.input.name}
                     checked={(this.props.value === option.value) ? true : false}
                     value={option.value}
                     onChange={this.props.handler}/>
@@ -95,6 +95,9 @@ class TextArea extends React.Component{
     }
 }
 
+/**
+ * Dropdown Input - Creates a dropdown form element
+ */
 class Dropdown extends React.Component{
     constructor(props){
         super(props)
@@ -103,18 +106,17 @@ class Dropdown extends React.Component{
         this.setState(next)
     }
     render(){
-        let options = this.props.options.map((option, index) => {
+        let options = this.props.input.options.map((option, index) => {
             return  <option key={index}
-                      value={option[this.props.value]}
-                      style={this.props.style.option}>
-                        {option[this.props.label]}
+                      value={option.value}>
+                        {option.label}
                     </option>
         })
         return(
             <select name={this.props.name} 
               onChange={this.props.handler}
               value={this.props.value}>
-                <option value="" style={this.props.style.option}></option>
+                <option value=""></option>
                 {options}
             </select>
         )
